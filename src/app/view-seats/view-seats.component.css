@@ -1,0 +1,48 @@
+.view-seats {
+   border:black; 
+   border-width:2px; 
+   border-style:groove;
+  padding: 0px 20px;
+  text-align: center;
+}
+
+.seat {
+    cursor: pointer;
+    width: 125px;
+    height: 125px;
+  }
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+ .tooltip-container .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+.tooltip-container:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  
+  

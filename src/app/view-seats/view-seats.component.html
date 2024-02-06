@@ -1,0 +1,24 @@
+<div class="view-seats"> Select your seats
+    <div class="image-container">
+        <div *ngFor="let _ of rows; let i = index">
+            <div class="tooltip-container">
+                <img class="seat" [src]="ImagePath[i]" (click)="isSeatselected(i)">
+                <div class="tooltiptext"> Seat No : {{ i + 1 }} </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+ <!-- <div class="view-seats"> Select your seats
+    <div class="image-container">
+        <div *ngFor="let row of rows; let i = index">
+            <div *ngFor="let col of cols; let j = index" class="tooltip-container">
+                <img class="seat" [src]="ImagePath[i][j]" (click)="isSeatselected(i, j)">
+                <div class="tooltiptext"> Seat No: {{ i * cols.length + j + 1 }} </div>
+            </div>
+        </div>
+    </div>
+</div> -->

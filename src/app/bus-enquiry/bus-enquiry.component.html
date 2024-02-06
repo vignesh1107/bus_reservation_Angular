@@ -1,0 +1,51 @@
+<form #busenquiry="ngForm">
+    <h1 style="text-align: center;"> Bus Ticket Booking</h1>
+    <div>
+        <label class="text-color">Source : </label>
+        <input type="text" name="source" [(ngModel)]="busModel.source">
+    </div>
+    <div>
+        <label class="text-color">Destination : </label>
+        <input type="text" name="destination" [(ngModel)]="busModel.destination">
+    </div>
+    <div>
+        <label class="text-color">Journey Date : </label>
+        <input type="date" name="travelDate" [(ngModel)]="busModel.travelDate">
+    </div>
+    <div>
+        <button class="button-style" (click)="getBuses()">Get Buses</button>
+        <h4 [class.text-success]="false" [ngClass]="status">{{ status }}</h4>
+    </div>
+    <div *ngIf="getSeat">
+        <h3 style="text-align: center;"> {{ busModel.source | titlecase }}-{{ busModel.destination | titlecase }} ({{
+            busModel.travelDate | date}})</h3>
+    </div>
+    <div>
+        <table style="width: 90%;">
+            <thead>
+                <tr class="text-color">
+                    <td>Bus Name</td>
+                    <td>Total Seats</td>
+                    <td>Available Seats</td>
+                    <td>Time</td>
+                </tr>
+            </thead>
+            <tbody *ngFor="let busdetails of busdetailsList">
+                <tr>
+                    <td>{{ busdetails.busName }}</td>
+                    <td>{{ busdetails.totalSeats }}</td>
+                    <td>{{ busdetails.availableSeats }}</td>
+                    <td>{{ busdetails.time }}</td>
+                    <button (click)="viewSeats(busdetails)">{{ busdetails.viewSeatsText }}</button>
+                </tr>
+                <tr>
+                    <td colspan="4"> <app-view-seats *ngIf="busdetails.viewSeatsBoolean"></app-view-seats></td>
+                    <td>
+                        <button *ngIf="busdetails.viewSeatsBoolean" (click)="bookSeats(busdetails)">Book Now</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+
